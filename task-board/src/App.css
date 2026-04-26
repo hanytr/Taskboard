@@ -65,19 +65,14 @@ body {
 
 .btn-add {
   padding: 12px 24px;
-  background-color: #754E43;
-  color: #FFFFFF;
-  border: none;
+  background-color: #00000000;
+  color: #000000;
+  border: 2px solid #0f0f0f;
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-}
-
-.btn-add:hover {
-  background-color: #5a3c33;
-  transform: scale(0.98);
 }
 
 .error-msg {
