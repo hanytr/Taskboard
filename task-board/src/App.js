@@ -16,24 +16,18 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
 
-  // Adding new tasks
   const addTask = (newTask) => {
     setTasks([...tasks, newTask]);
   };
 
-  // Delete tasks
   const deleteTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id));
   };
 
-  // Filter tasks based on searching and status
   const filteredTasks = tasks.filter(task => {
-    // Based on search (title contains, Uppercase or Lowercase is acceptable)
     const matchesSearch = searchQuery.trim() === '' || 
       task.title.toLowerCase().includes(searchQuery.toLowerCase());
-    // Based on status
     const matchesStatus = statusFilter === 'all' || task.status === statusFilter;
-    
     return matchesSearch && matchesStatus;
   });
 
@@ -41,7 +35,6 @@ function App() {
     <div className="app">
       <div className="container">
         <h1 className="title">Hany Todo List</h1>
-        
         <TaskForm onAddTask={addTask} />
         <TaskFilter 
           searchQuery={searchQuery}
