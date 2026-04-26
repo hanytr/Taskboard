@@ -2,9 +2,9 @@ import { useState } from 'react';
 import './App.css';
 
 const initialTasks = [
-  { id: '1', title: 'Hany learn React', status: 'todo' },
-  { id: '2', title: 'Hany build Todo App', status: 'in-progress' },
-  { id: '3', title: 'Hany review PR', status: 'done' },
+  { id: '1', title: 'Learn Python in 3 hours/ Javscript from F8', status: 'todo' },
+  { id: '2', title: 'Build Todo App', status: 'in-progress' },
+  { id: '3', title: 'Review work', status: 'done' },
 ];
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
 
   const handleAdd = () => {
     if (newTitle.trim() === '') {
-      setError('Vui lòng nhập tên công việc');
+      setError('Type your tasks');
       return;
     }
     const newTask = {
@@ -31,12 +31,11 @@ function App() {
     setError('');
   };
 
-  // Xóa task
   const handleDelete = (id) => {
     setTasks(tasks.filter(task => task.id !== id));
   };
 
-  // Lọc tasks
+
   const filteredTasks = tasks.filter(task => {
     const matchesSearch = searchQuery.trim() === '' ||
       task.title.toLowerCase().includes(searchQuery.toLowerCase());
@@ -44,7 +43,7 @@ function App() {
     return matchesSearch && matchesStatus;
   });
 
-  // Helper lấy badge màu
+
   const getStatusBadge = (status) => {
     switch(status) {
       case 'todo': return { text: 'Todo', className: 'badge-todo' };
@@ -59,12 +58,12 @@ function App() {
       <div className="container">
         <h1 className="title">Hany Todo List</h1>
 
-        {/* Form thêm task */}
+        {}
         <div className="form-group">
           <input
             type="text"
             className="input-text"
-            placeholder="Nhập tên công việc..."
+            placeholder="Type your tasks..."
             value={newTitle}
             onChange={(e) => { setNewTitle(e.target.value); if (error) setError(''); }}
           />
@@ -77,16 +76,16 @@ function App() {
             <option value="in-progress">In Progress</option>
             <option value="done">Done</option>
           </select>
-          <button className="btn-add" onClick={handleAdd}>+ Thêm</button>
+          <button className="btn-add" onClick={handleAdd}>+ Add</button>
         </div>
         {error && <p className="error-msg">{error}</p>}
 
-        {/* Thanh tìm kiếm và lọc */}
+        {}
         <div className="filter-group">
           <input
             type="text"
             className="search-input"
-            placeholder="🔍 Tìm kiếm công việc..."
+            placeholder= "Search the tasks"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -105,12 +104,12 @@ function App() {
         {/* Danh sách công việc */}
         {filteredTasks.length === 0 ? (
           <div className="empty-state">
-            <p>✨ Không có công việc nào ✨</p>
-            <p className="empty-hint">Hãy thêm công việc mới nhé!</p>
+            <p>✨ There don't have any tasks ✨</p>
+            <p className="empty-hint">Pls add more tasks!</p>
           </div>
         ) : (
           <>
-            <div className="task-count">{filteredTasks.length} công việc</div>
+            <div className="task-count">{filteredTasks.length} tasks</div>
             <div className="task-list">
               {filteredTasks.map(task => {
                 const badge = getStatusBadge(task.status);
@@ -121,7 +120,7 @@ function App() {
                       <span className={`badge ${badge.className}`}>{badge.text}</span>
                     </div>
                     <button className="btn-delete" onClick={() => handleDelete(task.id)}>
-                      🗑️ Xóa
+                      🗑️ Delete
                     </button>
                   </div>
                 );
