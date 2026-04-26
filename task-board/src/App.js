@@ -6,9 +6,6 @@ import './App.css';
 
 const initialTasks = [
   { id: '1', title: 'Hany learn React', status: 'todo' },
-  { id: '2', title: 'Hany Build Todo App', status: 'in-progress' },
-  { id: '3', title: 'Hany Review PR', status: 'done' },
-  { id: '4', title: 'Hany Pls take a rest', status: 'todo'},
 ];
 
 function App() {
